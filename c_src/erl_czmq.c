@@ -235,12 +235,12 @@ static void handle_zsocket_connect(ETERM *args, erl_czmq_state *state) {
     ETERM *endpoint_arg = erl_element(2, args);
     char *endpoint = erl_iolist_to_string(endpoint_arg);
     int rc = zsocket_connect(socket, endpoint);
-    if (rc == -1) {
-        write_term(ETERM_ERROR_CONNECT_FAILED, state);
-        return;
-    }
 
-    write_term(ETERM_OK, state);
+    if (rc == 0) {
+        write_term(ETERM_OK, state);
+    } else {
+        write_term(ETERM_ERROR_CONNECT_FAILED, state);
+    }
 
     erl_free(endpoint);
 }
