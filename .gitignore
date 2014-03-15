@@ -2,6 +2,7 @@
 *.so
 *.beam
 *.bak
+erl_crash.dump
 ebin
 priv/czmq-port
 priv/czmq-benchmark
