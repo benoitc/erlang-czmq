@@ -36,6 +36,7 @@ int clock_gettime(int clk_id, struct timespec *t){
 }
 #else
 #include <time.h>
+#include <sys/time.h>
 #endif
 
 #include "czmq.h"
@@ -74,7 +75,7 @@ static char rand_char() {
     // printable ascii range: 32 - 126 (94 chars)
     //int rand94 = 94 * (rand() / (RAND_MAX + 1.0));
     //return (char)(32 + rand94);
-    return '!';   // temp simplification to work around segfault 
+    return '!';   // temp simplification to work around segfault
                   // for large strings (related to getting string len)
 }
 
